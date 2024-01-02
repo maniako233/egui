@@ -1,0 +1,28 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1 class="text-center ">Commande reçu</h1>
+<h2>Merci pour votre achat!</h2>
+<p>Vous pouvez nous donnez votre avis ici</p>
+  
+{{ form_start(form) }}
+{{ form_row(form.message) }}
+
+{# Ajoutez la classe d-none à la div du champ user pour la masquer #}
+<div class="d-none">
+    {{ form_row(form.user) }}
+</div>
+
+<button type="submit" class="btn btn custom-bg-green btn-dark mb-2">Envoyer</button>
+{{ form_end(form) }}
+
+
+			<div class="card-body">
+
+				<p class="card-text">Ou Retourner à l'accueil Merci !.</p>
+				<a href="{{ path('accueil') }}" class="btn btn custom-bg-green btn-dark mb-2">Accueil</a>
+			</div>
+
+{% endblock %}

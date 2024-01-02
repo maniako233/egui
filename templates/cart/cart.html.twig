@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}cart{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center mt-4">Votre panier</h1>
+    {% if items %}
+        <table class="table">
+            <thead>
+                <tr>
+
+              
+                    
+                    <th>Coupe</th>
+                    <th>Type</th>
+                    <th>Prix</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                      
+                        <td>{{ item.product.coupe.name }}</td>
+                        <td>{{ item.product.type.name }}</td>
+                        <td>{{ item.product.price  }}€</td>
+                        <td>
+                        <a href="{{ path('cart_drop', {id: item.product.id}) }}" class="text-info"><i class="fas fa-minus"></i></a>
+                        {{ item.quantity }}
+                           <a href="{{ path('cart_add', {id: item.product.id}) }}" class="text-info"><i class="fas fa-plus"></i></a>
+                        </td>
+                       <td>
+                        {{ item.product.price  * item.quantity }}€
+                        </td>
+                        <td><a href="{{ path('cart_remove', {id: item.product.id} ) }}" class="btn-sm btn-danger"><i class="fas fa-times"></i></a></td>
+                    </tr>
+                    
+                {% endfor %}
+            </tbody>
+        </table>
+        <h5 class="text-end mb-5">Total : {{ total }}€</h5>
+
+         {% if app.user %}
+    
+            <a href="{{path('payment_stripe')}}" class="btn custom-bg-green  btn-primary">Payer votre commande</a>
+        
+        {% else %}
+            <a href="{{path('app_login')}}" class="btn custom-bg-green btn-dark">se connecter</a> pour valider sa commande
+        {% endif %}
+    {% else %}
+        <p>Votre panier est vide</p>
+    {% endif %}
+</div>
+{% endblock %}

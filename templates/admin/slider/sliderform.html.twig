@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    {% if editMode %}
+        Modifier slide
+    {% else %}
+        Ajouter slide
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-4">
+    {% if editMode %}
+    Modifier un slide
+    {% else %}
+    Ajouter un slide
+    {% endif %}
+    </h1>
+    <div class="container">
+    {{form_start(form ,{
+        attr: {
+            novalidate:'novalidate'
+        }
+    })}}
+
+      
+        {{form_row(form.image, {
+
+        }) }}
+
+            
+         {{form_row(form.position, {
+
+        }) }}
+
+        
+
+    
+    
+    <button class="btn btn-primary">Ajouter</button>
+
+    {{ form_end(form) }}
+
+    
+
+
+
+{% endblock %}

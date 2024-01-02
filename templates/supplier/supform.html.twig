@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    {% if editMode %}
+        Modifier Entreprise
+    {% else %}
+        Ajouter Entreprise
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-4">
+    {% if editMode %}
+    Modifier une Entreprise
+    {% else %}
+   Enrégistrer votre entreprise
+    {% endif %}
+    </h1>
+    <div class="container">
+    {{form_start(form ,{
+        attr: {
+            novalidate:'novalidate'
+        }
+    })}}
+
+        
+
+        {{form_row(form.company) }}
+
+        {{form_row(form.number) }}
+
+        {{form_row(form.address) }}
+
+        {{form_row(form.delivery) }}
+
+      
+        
+
+        
+       
+        
+
+    
+    
+    <button class="btn btn-primary custom-bg-green">Enrégistrer</button>
+
+    {{ form_end(form) }}
+
+    
+
+
+
+{% endblock %}

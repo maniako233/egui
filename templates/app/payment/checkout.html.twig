@@ -1,0 +1,35 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}cart{% endblock %}
+
+{% block body %}
+
+<div class="check">
+  <!-- Contenu de la page -->
+    <div class="container pay ">
+        <!-- Header, titre, etc. -->
+        <h1>Processus de Paiement</h1>
+        
+        <!-- Formulaire de paiement --> 
+        <form action="{{ path('payment_stripe') }}" method="post">
+            <!-- Affichage des produits dans le panier -->
+            {% for item in cartWithData %}
+                <div class="product">
+                    <span>{{ item.product.coupe.name }}</span>
+                    <span>{{ item.product.type.name }}</span>
+                    <span>{{ item.quantity }} x {{ item.product.price }} €</span>
+                </div>
+            {% endfor %}
+
+            <!-- Informations de livraison, coordonnées, etc. -->
+            <!-- Ajoutez des champs de formulaire selon vos besoins -->
+
+            <!-- Bouton de paiement -->
+            <button type="submit">Payer</button>
+        </form>
+    </div>
+    </div>
+
+    {% endblock %}
+    

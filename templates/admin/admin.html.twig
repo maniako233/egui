@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}backoffice{% endblock %}
+
+{% block body %}
+<h1 class="display-4 text-center my-4">BACKOFFICE</h1>
+<p class="tect-center"> </p>
+<a href="{{ path('users_admin')}}" class="col-md-6 offset-md-3 btn custom-bg-green btn-dark mb-2">Gestion des utulisateurs</a>
+<p class="tect-center"> </p>
+<a href="{{ path('admin_supplier')}}" class="col-md-6 offset-md-3 btn custom-bg-green btn-dark mb-2">Gestion des suppliers</a>
+<p class="tect-center"> </p>
+<a href="{{ path('admin_products')}}" class="col-md-6 offset-md-3 btn custom-bg-green btn-dark mb-2">Gestion des produits</a>
+<p class="tect-center"> </p>
+<a href="{{ path('admin_coupes')}}" class="col-md-6 offset-md-3 btn custom-bg-green btn-dark mb-2">Gestion des coupes</a>
+<p class="tect-center"> </p>
+<a href="{{ path('admin_types')}}" class="col-md-6 offset-md-3 btn custom-bg-green  btn-dark mb-2">Gestion des types</a>
+
+<p class="tect-center"></p>
+<a href="{{ path('admin_sliders')}}" class="col-md-6 offset-md-3 btn custom-bg-green btn-dark mb-2">Gestion des sliders</a> 
+<p class="tect-center"></p>
+
+<p class="tect-center"></p>
+<a href="{{ path('show_suppliers_with_products')}}" class="col-md-6 offset-md-3 btn custom-bg-green  btn-dark mb-2">Gestion des fournisseurs avec leurs produits</a> 
+<p class="tect-center"></p>
+<p class="tect-center"></p>
+<a href="{{ path('admin_detailorders')}}" class="col-md-6 offset-md-3 btn custom-bg-green  btn-dark mb-2">Gestion des Détails</a> 
+<p class="tect-center"></p>
+<p class="tect-center"></p>
+<a href="{{ path('admin_orders')}}" class="col-md-6 offset-md-3 btn custom-bg-green  btn-dark mb-2">Gestion des commandes</a> 
+<p class="tect-center"></p>
+
+
+
+
+
+{% endblock %}

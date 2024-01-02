@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center pd-4">Contactez-nous</h1>
+
+    <div>
+        <p> <br> N'hésitez pas à nous contacter pour tout renseignement.</p>
+
+        <p>Par Téléphone au: 06 00 00 00 06</p>
+
+        <p>Du Lundi au Vendredi, de 08h00 à 18h00</p>
+
+    </div>
+
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.message) }}
+
+    <button type="submit" class="btn btn-primary custom-bg-green">Envoyer</button>
+    {{ form_end(form) }}
+
+    <p> <br> Suivez-nous également sur nos réseaux sociaux  </p>
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 ">
+        <ul class="list-unstyled d-flex">
+            <li class="ms-3"><a class="link-dark"  href="https://www.whatsapp.com">
+                <img src="{{ asset('/uploads/images/logo/whatsapp.svg') }}" alt="logo whatsapp" width="36" height="36"> Whatsapp</a></li>
+
+            <li class="ms-3"><a class="link-dark"  href="https://www.facebook.com">
+                <img src="{{ asset('/uploads/images/logo/facebook.svg') }}" alt="logo facebook" width="36" height="36"> Facebook</a></li>
+
+            <li class="ms-3"><a class="link-dark"  href="https://www.instagram.com">
+                <img src="{{ asset('/uploads/images/logo/instagram.svg') }}" alt="logo instagram" width="36" height="36"> Instagram</a></li>
+        </ul>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fournisseurs avec Produits{% endblock %}
+
+{% block body %}
+  <div class="container mt-5">
+    <h2>Fournisseurs avec Produits</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Company</th>
+            <th scope="col">Number</th>
+            <th scope="col">Adress</th>
+            <th scope="col">Delivery</th>
+            <th scope="col">Products</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for supplier in suppliers %}
+            <tr>
+              <td>{{ supplier.id }}</td>
+              <td>{{ supplier.company }}</td>
+              <td>{{ supplier.number }}</td>
+              <td>{{ supplier.adress }}</td>
+              <td>{{ supplier.delivery }}</td>
+              <td>
+                <ul>
+                  {% for product in supplier.products %}
+                    <li>
+                       {{ product.price }}€ - {{ product.quantity }}
+                      <img src="{{ asset('/uploads/images/' ~ product.image) }}" alt="Product Image" width="50">
+                    </li>
+                  {% endfor %}
+                </ul>
+              </td>
+              <td>
+                <a href="{{ path('admin_supplier_update', {id: supplier.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                <a href="{{ path('admin_supplier_delete', {id: supplier.id}) }}" class="btn btn-danger btn-sm">Supprimer</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

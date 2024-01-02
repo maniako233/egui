@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des produits{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <a href="{{ path('new_supplier') }}" class="btn btn-primary">Ajouter</a>
+    <table class="table table-dark table-striped   ">
+        <thead >
+            <tr>
+                <th>#</th>
+                <th>Company</th>
+                <th>Number</th>
+                <th>Adress</th>
+                <th>Delivery</th>
+                <th>Action</th>
+              
+             
+               
+            </tr>
+        </thead>
+        <tbody>
+            {% for supplier in suppliers %}
+                <tr>
+                    <td>{{ supplier.id }}</td>
+                  <td>{{ supplier.company }}</td>
+                  <td>{{ supplier.number }}</td>
+                  <td>{{ supplier.adress }}</td>
+                  <td>{{ supplier.delivery }}</td>
+
+                         
+                    <td>
+                        <a href="{{ path('admin_supplier_update', {id: supplier.id}) }}"  class="text-warning">Modifier</a>
+                        <a href="{{ path('admin_supplier_delete', {id: supplier.id}) }}"  class="text-danger">Supprimer</a>
+                    </td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

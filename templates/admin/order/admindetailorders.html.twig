@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des produits{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <a href="{{ path('admin_detailorder_new') }}" class="btn btn-primary">Ajouter</a>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Quantity</th>
+                  <th>Produit</th>
+              
+                  <th>Commande</th>
+              
+               
+                <th>Action</th>
+                
+           
+               
+            </tr>
+        </thead>
+        <tbody>
+            {% for detailorder in detailorders %}
+                <tr>
+                    <td>{{ detailorder.id }}</td>
+                  <td>{{ detailorder.quantity }}</td>
+                  <td>{{ detailorder.product.id }}</td>
+                  <td>{{ detailorder.commande.id }}</td>
+                 
+ 
+                     
+                    <td>
+                        <a href="{{ path('admin_detailorder_update', {id: detailorder.id}) }}"  class="text-warning">Modifier</a>
+                        <a href="{{ path('admin_detailorder_delete', {id: detailorder.id}) }}"  class="text-danger">Supprimer</a>
+                    </td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+
+
+  
+
+
+ 

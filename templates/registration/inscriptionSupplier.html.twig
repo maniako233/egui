@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<br>
+
+<section>
+    <h1 class="col-md-6 offset-md-3 btn custom-bg-green btn-dark mb-2"> Inscrivez-vous </h1>
+</section>
+
+{{ form_start(registrationForm) }}
+<br>
+
+<p>Fournisseurs, inscrivez-vous pour déposer votre annonce.</p>
+
+{{ form_row(registrationForm.email) }}
+{{ form_row(registrationForm.fullname, {
+    label: 'Nom et prénom'
+}) }}
+{{ form_row(registrationForm.phone, {
+    label: 'Numéro de téléphone'
+}) }}
+{{ form_row(registrationForm.deliveryaddress, {'attr': {'class': 'd-none'}}) }}
+{{ form_row(registrationForm.billingaddress, {'attr': {'class': 'd-none'}}) }}
+{{ form_row(registrationForm.password.first, {
+    label: 'Mot de passe'
+}) }}
+{{ form_row(registrationForm.password.second, {
+    label: 'Retaper le mot de passe'
+}) }}
+
+{# Render roles as checkboxes #}
+{{ form_label(registrationForm.roles, null, {'label_attr': {'class': 'd-none'}}) }}
+{{ form_widget(registrationForm.roles) }}
+{{ form_errors(registrationForm.roles) }}
+
+{# Add a class to hide the ROLE_USER option #}
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide the entire div containing the User option only
+            var userOption = document.querySelector('#{{ registrationForm.roles.vars.id }}_0');
+            if (userOption) {
+                userOption.parentElement.classList.add('d-none');
+            }
+
+            // Hide deliveryadress and billingadress fields
+            document.querySelector('#{{ registrationForm.deliveryaddress.vars.id }}').classList.add('d-none');
+            document.querySelector('#{{ registrationForm.billingaddress.vars.id }}').classList.add('d-none');
+
+            // Hide labels for deliveryadress and billingadress
+            document.querySelector('label[for="{{ registrationForm.deliveryaddress.vars.id }}"]').classList.add('d-none');
+            document.querySelector('label[for="{{ registrationForm.billingaddress.vars.id }}"]').classList.add('d-none');
+        });
+    </script>
+{% endblock %}
+
+{{ form_row(registrationForm.agreeTerms) }}
+
+<button type="submit" class="btn btn custom-bg-green btn-dark mb-2">Register</button>
+{{ form_end(registrationForm) }}
+{% endblock %}

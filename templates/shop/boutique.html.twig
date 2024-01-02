@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits envoyés{% endblock %}
+
+{% block body %}
+
+<br>
+
+<section>
+    <h1 class="col-md-6 offset-md-3 btn custom-bg-green btn-dark mb-2"> Boutique </h1>
+</section>
+
+<section>
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 rounded-0 shadow custom-card-size">
+                    <img src="{{ asset('uploads/images/' ~ product.image) }}" alt="Product Image" class="card-img-top img-fluid">
+                    <div class="card-body mt-3 mb-3">
+                        <div class="row">
+                            <div class="col-10">
+                                <h4 class="card-title">{{ product.quantity }} <strong>KG</strong> </h4>
+                                <p class="card-text">
+                                    <div> {{ product.coupe.name }}</div>
+                                    <div><strong>Type :</strong>  {{ product.type.name }}</div>
+                                    <div> {{ product.coupe.name }}</div>
+                                    <div> <strong>Fournisseur :</strong> {{ product.supplier.company }}</div>
+                                    <!-- Ajoutez ici les informations que vous souhaitez afficher -->
+                                </p>
+                            </div>
+                            <div class="col-2">
+                                <i class="bi bi-bookmark-plus fs-2"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center text-center g-0">
+                        <div class="col-4">
+                            <h5 class="price">{{ product.price }}<strong>€/Mètre cube </strong> </h5>
+                        </div>
+                        <div class="col-8">
+                            <a href="{{ path('cart_add', {id: product.id}) }}" class="btn btn-dark w-100 p-3 btn custom-bg-green btn-dark mb-2">Ajouter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

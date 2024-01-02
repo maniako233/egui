@@ -1,0 +1,120 @@
+/* Reset CSS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Custom Styles */
+.custom-bg-green {
+    background-color: #008000; /* Vert Profond */
+}
+
+.btn.custom-bg-green:hover {
+    background-color: #8B4513; /* Couleur de fond au survol */
+    color: #fff; /* Couleur du texte au survol (ajustez selon vos préférences) */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Main Content Styles */
+.main-content {
+    max-width: 1200px;
+    margin: 0;
+    padding: 0;
+}
+
+.slider-h1, .slider-h2 {
+    color: #fff;
+}
+
+/* Footer Styles */
+.footer_dark a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.text-uppercase {
+    color: #D2B48C;
+}
+
+.footer-container {
+    padding-top: 93px;
+}
+
+/* Button Styles */
+button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 20px;
+    padding-top: 0px;
+    padding-bottom: 40px;
+}
+
+.shop {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Media Styles */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Heading Styles */
+h1, h2, h3, h4, h5, strong {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
+    color: #8B4513;
+}
+
+/* Default Text Styles */
+p {
+    font-family: 'Lora', serif;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    nav {
+        font-size: 14px;
+    }
+
+    .main-content {
+        padding: 10px;
+        padding-left: 15px; /* Ajuster la marge intérieure à gauche pour les écrans plus petits si nécessaire */
+        padding-right: 15px; /* Ajuster la marge intérieure à droite pour les écrans plus petits si nécessaire */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    nav {
+        font-size: 12px;
+    }
+
+    .main-content {
+        padding: 5px;
+        padding-left: 10px; /* Ajuster la marge intérieure à gauche pour les écrans encore plus petits si nécessaire */
+        padding-right: 10px; /* Ajuster la marge intérieure à droite pour les écrans encore plus petits si nécessaire */
+    }
+}

@@ -1,0 +1,47 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Notre Equipe{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h2 class="text-center mb-4 p-3">Rencontrez notre Équipe</h2>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ asset('/uploads/images/membre/membre1.jpeg') }}" class="card-img-top" alt="Membre de l'équipe">
+                <div class="card-body">
+                    <h5 class="card-title">José AYELESSO</h5>
+                    <p class="card-text">Fondateur et Directeur Général</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ asset('/uploads/images/membre/member2.jpg') }}" class="card-img-top" alt="Membre de l'équipe">
+                <div class="card-body">
+                    <h5 class="card-title">Marie Leclerc</h5>
+                    <p class="card-text">Responsable des Ventes</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ asset('/uploads/images/membre/member3.jpg') }}" class="card-img-top" alt="Membre de l'équipe">
+                <div class="card-body">
+                    <h5 class="card-title">Antoine Martin</h5>
+                    <p class="card-text">Négociant en Bois Exotique</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="mt-4">L'équipe Egui est composée de professionnels passionnés par le bois exotique. Chacun de nos membres apporte son expertise unique pour assurer la qualité de nos produits et satisfaire les besoins de nos clients. Pour vous satisfaire nous sommes déterminés à offrir un service exceptionnel et à partager notre amour du bois exotique avec vous.</p>
+</div>
+
+
+{% endblock %}

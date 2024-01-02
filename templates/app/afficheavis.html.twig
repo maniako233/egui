@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Avis {% endblock %}
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4 pd-3">Vos avis</h1>
+<div >
+        {% for avis in avis %}
+        <div> <br> </div>
+            <div class="card mb-3 dark  custom-bg-green  " >
+                <div class="card-body">
+                    <p class="card-text text-light">{{ avis.date|date('d-m-Y') }}</p>
+                    <p class="card-text text-light">{{ avis.message }}</p>
+                    
+                    {# Accéder aux propriétés de l'utilisateur associé à l'avis #}
+                    {% if avis.user %}
+                        <p class="card-text text-light">Avis écrit par : {{ avis.user.fullname }}</p>
+                    {% else %}
+                        <p class="card-text text-light">Auteur inconnu</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+
+    	<div class="card-body">
+
+			
+				<a href="{{ path('accueil') }}" class="btn btn custom-bg-green btn-dark mb-2">Accueil</a>
+			</div>
+
+{% endblock %}

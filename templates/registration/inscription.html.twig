@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <h1>Inscription</h1>
+
+    {# Afficher le message flash d'erreur seulement si le formulaire est soumis et non valide #}
+    {# {% if app.request.method == 'POST' and app.request.attributes.get('_route') == 'app_register' and not registrationForm.vars.valid %}
+        {% for flashMessage in app.flashes('error') %}
+            <div class="alert alert-danger">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+    {% endif %} #}
+
+    {# Afficher le message flash de succès après la soumission du formulaire #}
+    {% if app.request.method == 'POST' and app.request.attributes.get('_route') == 'app_register' and registrationForm.vars.valid %}
+        {% for flashMessage in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {# Rendre le formulaire d'inscription #}
+    {{ form_start(registrationForm) }}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.fullname, {
+    label: 'Nom et prénom'
+}) }}
+
+   {{ form_row(registrationForm.phone, {
+    label: 'Numéro de téléphone'
+}) }}
+   {{ form_row(registrationForm.deliveryaddress, {
+    label: 'Adresse de livraison'
+}) }}
+  {{ form_row(registrationForm.billingaddress, {
+    label: 'Adresse de facturation'
+}) }}
+  {{ form_row(registrationForm.password.first, {
+    label: 'Mot de passe'
+}) }}
+{{ form_row(registrationForm.password.second, {
+    label: 'Retaper le mot de passe'
+}) }}
+   {# Hide Supplier option #}
+{{ form_label(registrationForm.roles, null, {'label_attr': {'class': 'd-none' }}) }}
+{{ form_widget(registrationForm.roles) }}
+{{ form_errors(registrationForm.roles) }}
+
+{# Add a class to hide the Supplier option #}
+{% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide the entire div containing the Supplier option
+            var supplierOption = document.querySelector('#{{ registrationForm.roles.vars.id }}_1');
+            if (supplierOption) {
+                supplierOption.parentElement.classList.add('d-none');
+            }
+        });
+    </script>
+{% endblock %}
+    {{ form_row(registrationForm.agreeTerms) }}
+
+    <button type="submit">Inscription</button>
+    {{ form_end(registrationForm) }}
+
+{% endblock %}

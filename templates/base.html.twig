@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Hotel Housse{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+           <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6mL5lI5BkPB38cyFbd6VMNlPb4QZz7RE"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6mL5lI5BkPB38cyFbd6VMNlPb4QZz7RE"
+          crossorigin="anonymous">
+          
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-XPMpyv9U8h5fKt0ti8VfhFq8VkA4Ibr4hAYK7YO5bStFjFqnF9aI3SMvFpxlcljG"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy6mL5lI5BkPB38cyFbd6VMNlPb4QZz7RE"
+            crossorigin="anonymous"></script>
+             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body>
+    
+    <nav class="navbar navbar-expand-lg custom-bg-green " data-bs-theme="dark">
+  <div class="container-fluid  ">
+   <a class="navbar-brand mx-5" href="{{ path('accueil') }}">
+        <img src="{{ asset('/uploads/images/theegui.png') }}" alt="Le logo Egui" width="86" height="86">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ path('accueil') }}">Accueil
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ path('boutique') }}">Boutique</a>
+        </li>
+        
+    
+        <li class="nav-item ">
+          <a class="nav-link active" href="{{ path('cart') }}">Panier</a>
+        </li>
+
+ <li class="nav-item">
+          <a class="nav-link active" href="{{ path('app_contact') }}">Contact</a>
+        </li>
+        
+      
+
+       <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" data-bs-toggle="dropdown"  href="{{ path('accueil') }}">A-propos</a>
+
+           <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ path('app_qsn') }}">Qui sommes nous ?</a>
+            <a class="dropdown-item" href="{{ path('app_mentionslegales') }}">Mentions légales</a>
+            <a class="dropdown-item" href="{{ path('app_cgv') }}">CGV</a>
+            <a class="dropdown-item" href="{{ path('app_cgu') }}">CGU</a>
+            <a class="dropdown-item" href="{{ path('app_rgpd') }}">RGPD</a>
+         
+          </div>
+
+        </li>
+          <li class="nav-item ">
+          <a class="nav-link active" href="{{ path('app_avis_affiche') }}">Avis</a>
+        </li>
+
+        <li class="nav-item"> 
+        {% if is_granted('ROLE_ADMIN') %}
+              <li class="nav-item">
+               <a class="nav-link active" href="{{ path('admin') }}">Admin</a>
+                </li>
+        {% endif %}
+        
+      </ul>
+     
+       <form class="d-flex">
+                    {% if app.user %}
+                        {# Si l'utilisateur est connecté, afficher le lien de déconnexion #}
+                        <a class="navbar-brand my-2 my-sm-0" href="{{ path('account') }}">Mon compte</a>
+                        <a class="navbar-brand my-2 my-sm-0" href="{{ path('app_logout') }}">Déconnexion</a>
+                    {% else %}
+                        {# Si l'utilisateur n'est pas connecté, afficher les liens de connexion et d'inscription #}
+                        <a class="navbar-brand my-2 my-sm-0" href="{{ path('app_login') }}">Connexion</a>
+                        <a class="navbar-brand my-2 my-sm-0" href="{{ path('app_register') }}">Inscription</a>
+                        <a class="navbar-brand my-2 my-sm-0" href="{{ path('supplier_register') }}">Inscription-Fournisseurs</a>
+                    {% endif %}
+                </form>
+    </div>
+  </div>
+</nav>
+ <div class="container"> <!-- Ajout du conteneur -->
+    <div class="main-content">
+        {% block body %}
+            <!-- Votre
+             contenu principal ici -->
+   {% endblock %}
+    </div>
+</div>
+
+   
+  <div class="col">
+    <div class="card">
+      
+      <div class="card-body">
+     
+        <p class="card-text">
+          EGUI
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+   
+<div id="cookie-popup" class="alert alert-info mb-0 fixed-bottom">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col">
+                <p class="mb-0">Ce site utilise des cookies. En continuant à naviguer sur ce site, vous acceptez notre utilisation des cookies.</p>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-primary" onclick="acceptCookies()">Accepter les cookies</button>
+                <button class="btn btn-secondary" onclick="refuseCookies()">Refuser les cookies</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="{{ asset('/js/cookie.js') }}"></script>
+
+      
+
+
+         {% block footer %}
+
+        <!-- Footer -->
+<footer class=" custom-bg-green text-center text-white text">
+  <!-- Grid container -->
+<div class="container">
+  <footer class="py-5">
+    <div class="row">
+      
+      
+
+      <div class="col-6 col-md-2 mb-3">
+        <h6 class="text-uppercase fw-bold mb-4">
+            A-propos
+          </h6>
+        <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="{{ path('app_rgpd') }}" class="nav-link p-0 text-white text">RGPD</a></li>
+             
+            <li class="nav-item mb-2"><a href="{{ path('app_mentionslegales') }}" class="nav-link p-0 text-white text">Mentions légales</a></li>
+         
+          <li class="nav-item mb-2"><a href="{{ path('app_qsn') }}" class="nav-link p-0 text-white text">Qui sommes nous ?</a></li>
+     <li class="nav-item mb-2"><a href="{{ path('app_cgu') }}" class="nav-link p-0 text-white text">CGU</a></li>
+        
+          {# <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li> #}
+        </ul>
+      </div>
+      
+
+     <div class="col-6 col-md-2 mb-3">
+
+         <h6 class="text-uppercase fw-bold mb-4">
+            Liens
+          </h6>
+       
+        <ul class="nav flex-column">
+        
+          <li class="nav-item mb-2"><a href="{{ path('app_shop_types') }}" class="nav-link p-0 text-white text">Accueil</a></li>
+         <li class="nav-item mb-2"><a href="{{ path('app_equipe') }}" class="nav-link p-0 text-white text">Notre équipe</a></li>
+          <li class="nav-item mb-2 active "><a href="{{ path('app_shop_types') }}" class="nav-link p-0 text-white text ">Types de bois </a></li>
+        
+           <li class="nav-item mb-2"><a href="{{ path('app_avis_affiche') }}" class="nav-link p-0 text-white text">Avis clients </a></li>
+        </ul>
+      </div>
+
+
+      <div class="col-md-5 offset-md-1 mb-3">
+        <form>
+          <h6 class="text-uppercase fw-bold mb-4">
+          Contact
+          </h6>
+          <p>eguicorp@gmail.com</p>
+          <p>+33128893939</p>
+          <p>21 Rue de la  Liberté Paris.</p>
+        
+        </form>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>&copy; 2023 made by  José AYELESSO.</p>
+
+      <ul class="list-unstyled d-flex">
+
+      
+
+        <li class="ms-3"><a class="link-dark"  href="https://www.whatsapp.com">
+        <img src="{{ asset('/uploads/images/logo/whatsapp.svg') }}" alt="logo facebook" width="36" height="36"><use xlink:href="#facebook"/>Whatsapp</svg></a></li>
+
+        <li class="ms-3"><a class="link-dark"  href="https://www.facebook.com">
+        <img src="{{ asset('/uploads/images/logo/facebook.svg') }}" alt="logo facebook" width="36" height="36"><use xlink:href="#facebook"/>facebook</svg></a></li>
+
+        <li class="ms-3"><a class="link-dark"  href="https://www.instagram.com">
+        <img src="{{ asset('/uploads/images/logo/instagram.svg') }}" alt="logo facebook" width="36" height="36"><use xlink:href="#facebook"/>Instagram</svg></a></li>
+      </ul>
+    </div>
+   
+    
+  </footer>
+  </div>
+  <!-- Copyright -->
+
+<!-- Footer -->
+{% endblock %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+
+    </body>
+</html>

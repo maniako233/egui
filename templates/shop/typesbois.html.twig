@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Types de bois{% endblock %}
+
+{% block body %}
+
+
+
+
+
+<div class="mt-4 row gx-8  ">
+<h1  class="col-md-6 offset-md-3 btn custom-bg-green btn-dark mb-2">Types de bois exotiques</h1>
+
+
+{% for type in types %}
+<div class="col-md-4 ">
+
+
+    <div class="card text-white custom-bg-green mb-3 ">
+    
+        <div class="card-header"><img src="{{ asset('uploads/images/' ~ type.image) }}" alt="" class="img-fluid"></div>
+        
+        <div class="card-body">
+            <h4 class="card-title text-center">{{ type.name }}</h4>
+             <p class="card-text text-justify">{{ type.description }}</p>
+            <div class="text-center">
+                <a href="{{ path('boutique', {id: type.id}) }}" class="btn btn-outline-light">Notre boutique</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AppController!
+{% endblock %}
+
+{% block body %}
+	<section>
+		<div class="video-container">
+			<video autoplay loop muted width="100%">
+				<source src="{{ asset('uploads/videos/video.mp4') }}" type="video/mp4">
+				Votre navigateur ne supporte pas la balise vidéo.
+			</video>
+		</div>
+
+		<br>
+
+		<h1>Bienvenue</h1>
+		<p>Bienvenue sur <strong>EGUI</strong>, votre plateforme en ligne exclusive pour découvrir et acquérir une vaste sélection de bois exotiques de qualité supérieure. <br> Chez<strong>EGUI</strong>, nous sommes passionnés par la beauté naturelle et la richesse des bois provenant des régions les plus exotiques du monde. Notre site a été créé pour les amateurs de bois, les artisans et les professionnels qui recherchent des matériaux exceptionnels pour leurs projets.
+		</p>
+
+		
+			<p><strong>L'Excellence du Bois Exotique</strong> Chez <strong>EGUI</strong>, nous nous engageons à vous fournir une gamme de bois exotiques soigneusement sélectionnés, chacun présentant des caractéristiques uniques de grain, de couleur et de durabilité. Que vous soyez un ébéniste chevronné ou un passionné de bricolage, notre collection diversifiée vous offre la possibilité d'exprimer votre créativité à travers des matériaux d'exception.<br><strong>Un Catalogue Étendu</strong>Explorez notre catalogue complet qui comprend des essences de bois provenant d'Amérique du Sud, d'Afrique, d'Asie et d'autres régions exotiques. Que vous recherchiez des bois durs pour des meubles de qualité, des bois précieux pour des projets artistiques ou des options durables pour la construction,<strong>EGUI</strong>a ce qu'il vous faut.</p>
+
+	
+<div class="card-body text-center">
+    <img src="{{ asset('/uploads/images/logo/originallogoegui.png') }}" alt="Le logo Egui" width="386" height="286" class="mx-auto">
+</div>
+			<div>
+			<br>
+			 
+
+		<h2>Service Clientèle Personnalisé	</h2>
+<p>Chez <strong>EGUI</strong>, nous croyons en un service clientèle exceptionnel. Notre équipe dévouée est prête à répondre à toutes vos questions, vous conseiller sur le choix du bois et vous garantir une expérience d'achat sans tracas. Nous comprenons l'importance de la qualité et de la satisfaction du client, et nous nous efforçons de dépasser vos attentes à chaque étape.<br><strong>
+	Engagement envers la Durabilité</strong> En plus de vous offrir des bois exotiques de la plus haute qualité, nous sommes également engagés envers la durabilité et la gestion responsable des ressources forestières. Chez <strong>EGUI</strong>, nous soutenons des pratiques éthiques et respectueuses de l'environnement pour assurer la préservation des forêts exotiques pour les générations futures.
+	<br><strong>Commandez en Toute Confiance</strong><br>Explorez notre site, découvrez notre collection impressionnante et commandez en toute confiance avec la certitude de recevoir des bois exotiques exceptionnels, livrés directement à votre porte. <br><strong>EGUI</strong>est plus qu'un site de vente de bois exotiques ; c'est une expérience qui vous connecte à la beauté naturelle du monde.<br>Découvrez la magie du bois exotique avec <strong>EGUI</strong> où l'excellence rencontre l'authenticité.</p>
+	
+
+</div>
+
+
+<section>
+
+	<div id="carouselExampleCaptions" class="carousel slide">
+
+		<div class="carousel-indicators z-1">
+
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		</div>
+		<div class="carousel-inner">
+
+			{% for slider in sliders %}
+
+
+				<div class="carousel-item {% if slider.position ==  1 %} active   {% endif %}">
+
+					<img src="{{ asset('uploads/images/' ~ slider.image) }}" class="img-fluid" alt="Image" width="1400" height="580"/>
+
+					<div class="carousel-caption d-none d-md-block">
+
+						<h2 class="slider-h1">
+							EGUI
+						</h2>
+						<h4 class="slider-h2">Bois exotiques de qualité supérieure</h4>
+
+
+					</div>
+
+				</div>
+			{% endfor %}
+
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+
+		</button>
+	</section>
+
+
+	<section>
+
+
+		<div class="container mt-5">
+			<div class="row">
+
+				<div class="col-md-6">
+					<div class="card testimonial-card">
+
+						<img src="{{ asset('/uploads/images/temoin/Mathilde.jpg') }}" class="card-img-top" alt="Témoin 1" width="86" height="86">
+						<div class="card-body">
+							<p class="card-text">
+								"Grâce à EGUI, j'ai découvert des bois exotiques exceptionnels qui ont transformé mes projets de décoration d'intérieur. La qualité et la diversité de leur sélection m'ont permis de créer des espaces uniques et élégants. EGUI, mon partenaire incontournable pour des designs d'intérieur inspirants.""</p>
+							<p class="testimonial-author">- Mathilde SILVA</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="card testimonial-card">
+
+						<img src="{{ asset('/uploads/images/temoin/Romain.jpg') }}" class="card-img-top" alt="Témoin 2" width="86" height="86">
+						<div class="card-body">
+							<p class="card-text">"En tant qu'ébéniste passionné, EGUI offre une gamme incomparable de bois exotiques de première qualité. Leurs essences rares et la qualité exceptionnelle du bois ont considérablement amélioré la finesse de mes créations artisanales. Avec EGUI, je trouve l'inspiration et les matériaux nécessaires pour réaliser des meubles uniques et remarquables."</p>
+							<p class="testimonial-author">- Romain LOTE</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+
+		<div class="card text-center">
+
+
+			<div class="card-body">
+
+				<p class="card-text">Découvrez notre boutique.</p>
+				<a href="{{ path('boutique') }}" class="btn btn custom-bg-green btn-dark mb-2">Boutique</a>
+			</div>
+
+		</div>
+	</div>
+
+</section>{% endblock %}
